@@ -1,15 +1,15 @@
 <template>
-  <v-app dark>
+  <v-app>
     <v-navigation-drawer
       v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
+      clipped="true"
+      right="true"
+      floating="true"
       app
     >
       <v-list>
         <v-list-tile
-          v-for="(item, i) in items"
+          v-for="(item, i) in menuItems"
           :key="i"
           :to="item.to"
           router
@@ -24,38 +24,26 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar :clipped-left="clipped" fixed app>
-      <v-toolbar-side-icon @click="drawer = !drawer" />
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>{{ `chevron_${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>web</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>remove</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>menu</v-icon>
-      </v-btn>
+    <v-toolbar color="white" flat clipped-right extended app>
+      <template v-slot:extension>
+        <v-toolbar-title v-text="title" />
+        <v-spacer></v-spacer>
+
+        <v-toolbar-items>
+          <v-btn flat v-for="item in menuItems" :key="item.title" :to="item.to">
+            <v-icon left>{{ item.icon }}</v-icon>
+            {{ item.title }}
+          </v-btn>
+        </v-toolbar-items>
+
+        <v-toolbar-side-icon @click="drawer = !drawer" />
+      </template>
     </v-toolbar>
     <v-content>
       <v-container>
         <nuxt />
       </v-container>
     </v-content>
-    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-      <v-list>
-        <v-list-tile @click.native="right = !right">
-          <v-list-tile-action>
-            <v-icon light>compare_arrows</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
     <v-footer :fixed="fixed" app>
       <span>&copy; 2019</span>
     </v-footer>
@@ -66,25 +54,37 @@
 export default {
   data() {
     return {
-      clipped: false,
+      clipped: true,
       drawer: false,
       fixed: false,
-      items: [
+      menuItems: [
         {
-          icon: 'apps',
-          title: 'Welcome',
+          icon: 'home',
+          title: 'Home',
           to: '/'
         },
         {
-          icon: 'bubble_chart',
-          title: 'Inspire',
-          to: '/inspire'
+          icon: 'school',
+          title: 'Education',
+          to: '/Education'
+        },
+        {
+          icon: 'poll',
+          title: 'Project',
+          to: '/Project'
+        },
+        {
+          icon: 'work',
+          title: 'Experience',
+          to: '/Experience'
+        },
+        {
+          icon: 'alternate_email',
+          title: 'Contact',
+          to: '/Contact'
         }
       ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Davide-Z'
     }
   }
 }
