@@ -5,7 +5,7 @@
   "author": "Davide-Z",
   "private": true,
   "scripts": {
-    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
+    "deploy": "push-dir --dir=dist --branch=master --cleanup",
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
