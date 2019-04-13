@@ -24,13 +24,19 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar color="white" flat clipped-right extended app>
+    <v-toolbar color="white" flat clipped-right extended scroll-off-screen app>
       <template v-slot:extension>
-        <v-toolbar-title v-text="title" />
+        <logo />
         <v-spacer></v-spacer>
 
         <v-toolbar-items>
-          <v-btn flat v-for="item in menuItems" :key="item.title" :to="item.to">
+          <v-btn
+            flat
+            class="hidden-sm-and-down"
+            v-for="item in menuItems"
+            :key="item.title"
+            :to="item.to"
+          >
             <v-icon left>{{ item.icon }}</v-icon>
             {{ item.title }}
           </v-btn>
@@ -40,7 +46,7 @@
       </template>
     </v-toolbar>
     <v-content>
-      <v-container>
+      <v-container class="mt-4">
         <nuxt />
       </v-container>
     </v-content>
@@ -51,7 +57,12 @@
 </template>
 
 <script>
+import Logo from '~/components/Logo.vue'
+
 export default {
+  components: {
+    Logo
+  },
   data() {
     return {
       clipped: true,
@@ -83,8 +94,7 @@ export default {
           title: 'Contact',
           to: '/Contact'
         }
-      ],
-      title: 'Davide-Z'
+      ]
     }
   }
 }
