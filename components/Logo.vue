@@ -1,6 +1,7 @@
 <template>
   <v-img
     contain
+    height="140"
     class="Logo"
     alt="Davide Z"
     :src="require('@/assets/logo.png')"
