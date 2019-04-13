@@ -1,17 +1,15 @@
 <template>
   <v-layout column justify-center align-center>
     <v-flex xs12 sm8 md6>
-      <div class="text-xs-center">
-        <logo />
-      </div>
       <v-card>
         <v-card-title class="headline"
-          >ABC ZWelcome to the Vuetify + Nuxt.js template</v-card-title
+          >Welcome to the Vuetify + Nuxt.js template</v-card-title
         >
+        <v-text>{{ title }}</v-text>
         <v-card-text>
           <p>
             <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-            zed Vuetify is a progressive Material Design component framework for
+            Vuetify is a progressive Material Design component framework for
             Vue.js. It was designed to empower developers to create amazing
             applications.
           </p>
@@ -58,11 +56,11 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
+  data() {
+    return {
+      title: 'Home'
+    }
   }
 }
 </script>
