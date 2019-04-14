@@ -46,7 +46,7 @@
       </template>
     </v-toolbar>
     <v-content>
-      <v-container class="mt-4">
+      <v-container fluid mt-4 justify-center>
         <nuxt />
       </v-container>
     </v-content>
