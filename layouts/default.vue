@@ -42,7 +42,10 @@
           </v-btn>
         </v-toolbar-items>
 
-        <v-toolbar-side-icon @click="drawer = !drawer" />
+        <v-toolbar-side-icon
+          v-show="$vuetify.breakpoint.smAndDown"
+          @click="drawer = !drawer"
+        />
       </template>
     </v-toolbar>
     <v-content>
@@ -50,7 +53,7 @@
         <nuxt />
       </v-container>
     </v-content>
-    <v-footer :fixed="fixed" app>
+    <v-footer>
       <span>&copy; 2019</span>
     </v-footer>
   </v-app>
@@ -67,7 +70,6 @@ export default {
     return {
       clipped: true,
       drawer: false,
-      fixed: false,
       menuItems: [
         {
           icon: 'home',
