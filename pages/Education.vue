@@ -66,8 +66,8 @@ export default {
             'Financial economy',
             'Game theory'
           ],
-          image: require('@/assets/ensae_paristech.jpg'),
-          logo: require('@/assets/ensae_logo.jpg'),
+          image: require('@/assets/education/ensae_paristech.jpg'),
+          logo: require('@/assets/education/ensae_logo.jpg'),
           show: false
         },
         {
@@ -84,8 +84,8 @@ export default {
             'Software engineering',
             'Relational algebra'
           ],
-          image: require('@/assets/telecom_sudparis.jpg'),
-          logo: require('@/assets/tsp_logo.png'),
+          image: require('@/assets/education/telecom_sudparis.jpg'),
+          logo: require('@/assets/education/tsp_logo.png'),
           show: false
         },
         {
@@ -100,8 +100,8 @@ export default {
             'Engineering Science',
             'Chemistry'
           ],
-          image: require('@/assets/lycee_charlemagne.jpg'),
-          logo: require('@/assets/charlemagne_logo.png'),
+          image: require('@/assets/education/lycee_charlemagne.jpg'),
+          logo: require('@/assets/education/charlemagne_logo.png'),
           show: false
         },
         {
@@ -117,8 +117,8 @@ export default {
             'Geography',
             'History'
           ],
-          image: require('@/assets/lycee_charlemagne_cours.jpg'),
-          logo: require('@/assets/charlemagne_logo.png'),
+          image: require('@/assets/education/lycee_charlemagne_cours.jpg'),
+          logo: require('@/assets/education/charlemagne_logo.png'),
           show: false
         }
       ]
