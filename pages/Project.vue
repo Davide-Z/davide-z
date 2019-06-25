@@ -9,10 +9,14 @@
         <v-flex md8>
           <v-card flat>
             <v-card-title primary-title>
-              <div class="headline">{{ project.title }}</div>
+              <div class="display-1">{{ project.title }}</div>
             </v-card-title>
 
-            <v-card-text>{{ project.overview }}</v-card-text>
+            <v-card-text>
+              <blockquote class="blockquote">
+                {{ project.overview }}
+              </blockquote>
+            </v-card-text>
 
             <v-divider inset></v-divider>
             <v-card-actions>
@@ -47,7 +51,10 @@
               <div class="headline">Data</div>
             </v-card-title>
             <v-card-text>
-              {{ project.data.description }}
+              <blockquote class="blockquote">
+                {{ project.data.description }}
+              </blockquote>
+              <br />
               <v-chip color="secondary" text-color="white">
                 {{ project.data.n }} Data
               </v-chip>
@@ -75,6 +82,8 @@
             <v-slide-y-transition>
               <v-card-text v-show="project.data.featuresShow">
                 <v-chip
+                  color="tertiary"
+                  text-color="white"
                   v-for="(feature, i) in project.data.feature_examples"
                   :key="i"
                 >
@@ -82,6 +91,29 @@
                 </v-chip>
               </v-card-text>
             </v-slide-y-transition>
+
+            <v-divider inset></v-divider>
+
+            <v-card-title secondary-title>
+              <div class="headline">Graphics</div>
+            </v-card-title>
+            <v-layout row wrap justify-space-around align-end>
+              <v-flex
+                v-for="(figure, j) in project.figures"
+                :key="j"
+                md5
+                sm4
+                xs8
+                justify-center
+              >
+                <v-img :src="figure.image"></v-img>
+                <v-card-text class="font-weight-thin font-italic">
+                  <p class="text-xs-center">
+                    Figure {{ j }} : {{ figure.caption }}
+                  </p>
+                </v-card-text>
+              </v-flex>
+            </v-layout>
           </v-card>
         </v-flex>
       </v-layout>
