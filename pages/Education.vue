@@ -57,7 +57,7 @@ export default {
           degree: 'MSc in Statistics',
           description:
             'French engineering school specialised in economy and statistics.',
-          year: '2016 - 2018',
+          year: '2018 - 2020',
           courses: [
             'Machine learning',
             'Stochastic process',
