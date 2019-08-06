@@ -127,7 +127,7 @@ export default {
     return {
       projects: [
         {
-          tab: 'Health',
+          tab: '🧬 Health',
           title: 'Gait Analysis for Alzheimer Detection',
           tools: ['Python', 'Scikit-learn', 'Plotly', 'Tensorflow'],
           toolsShow: true,
@@ -160,7 +160,7 @@ export default {
           ]
         },
         {
-          tab: 'NLP',
+          tab: '💬 NLP',
           title: 'AlloCiné User Reviews Relevance Ranking',
           tools: ['Python', 'Scikit-learn', 'Beatiful Soup', 'Word2Vec'],
           toolsShow: true,
@@ -191,9 +191,54 @@ export default {
               image: require('@/assets/project/nlp_fig2.png')
             }
           ]
+        },
+        {
+          tab: '🌱 BIOTECH',
+          title: 'Seeds Germination Rate Regression',
+          tools: [
+            'Python',
+            'Scikit-learn',
+            '\\(\\propto\\)-SVM',
+            'Remote Jupyter Notebook'
+          ],
+          toolsShow: true,
+          overview:
+            'The startup ScreenSeed desires to automatise seeds evolution monitoring at large scale. It automatically compares seed germination experiments on metrics such as root development and germination delay through optical sensors. This project supervised by ScreenSeed aims at determining the germination rate of seeds placed into a culture tube.',
+          link: 'https://screenseed.com',
+          data: {
+            n: '853',
+            n_features: '84',
+            feature_examples: [
+              'Cadence',
+              'Ambulation time',
+              'Velocity',
+              'Swing percentage'
+            ],
+            featuresShow: true,
+            description:
+              "203 Patients' gait parameters measured with the pressure sensitive walkway GAITRite® provided by the university hospital trust in Paris 🏥, namely the Assistance Publique – Hôpitaux de Paris (AP-HP)."
+          },
+          figures: [
+            {
+              caption: 'Diagnostics proportion',
+              image: require('@/assets/project/health_fig1.png')
+            },
+            {
+              caption: 'Cadence distribution by diagnostic',
+              image: require('@/assets/project/health_fig2.png')
+            }
+          ]
         }
       ]
     }
+  },
+  mounted() {
+    const latexScript = document.createElement('script')
+    latexScript.setAttribute(
+      'src',
+      'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'
+    )
+    document.head.appendChild(latexScript)
   }
 }
 </script>
