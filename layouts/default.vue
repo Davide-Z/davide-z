@@ -61,6 +61,7 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
+import twemoji from 'twemoji'
 
 export default {
   components: {
@@ -98,6 +99,18 @@ export default {
         }
       ]
     }
+  },
+  mounted() {
+    twemoji.parse(document.body)
   }
 }
 </script>
+
+<style>
+img.emoji {
+  height: 1em;
+  width: 1em;
+  margin: 0 0.05em 0 0.1em;
+  vertical-align: -0.1em;
+}
+</style>
