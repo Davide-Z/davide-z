@@ -198,7 +198,7 @@ export default {
           tools: [
             'Python',
             'Scikit-learn',
-            '\\(\\propto\\)-SVM',
+            'prop-SVM',
             'Remote Jupyter Notebook'
           ],
           toolsShow: true,
@@ -231,14 +231,6 @@ export default {
         }
       ]
     }
-  },
-  mounted() {
-    const latexScript = document.createElement('script')
-    latexScript.setAttribute(
-      'src',
-      'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'
-    )
-    document.head.appendChild(latexScript)
   }
 }
 </script>

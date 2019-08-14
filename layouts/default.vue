@@ -60,8 +60,15 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Vue from 'vue'
 import twemoji from 'twemoji'
+import Logo from '~/components/Logo.vue'
+
+Vue.mixin({
+  mounted() {
+    twemoji.parse(document.body)
+  }
+})
 
 export default {
   components: {
@@ -99,9 +106,6 @@ export default {
         }
       ]
     }
-  },
-  mounted() {
-    twemoji.parse(document.body)
   }
 }
 </script>
