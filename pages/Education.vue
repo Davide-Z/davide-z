@@ -14,19 +14,16 @@
                 <div class="title">{{ education.school }}</div>
                 <span class="subtitle">
                   {{ education.degree }}
+                  <br />
                 </span>
                 <span v-if="$vuetify.breakpoint.smAndDown">
                   ({{ education.year }})
                 </span>
               </div>
               <v-spacer></v-spacer>
-              <v-img
-                v-if="$vuetify.breakpoint.mdAndUp"
-                :src="education.logo"
-                height="100"
-                contain
-              />
+              <v-img :src="education.logo" height="100" contain />
             </v-card-title>
+            <v-divider inset></v-divider>
             <v-card-text>{{ education.description }}</v-card-text>
 
             <v-card-actions>
@@ -107,7 +104,7 @@ export default {
         },
         {
           school: 'Lycée Charlemagne',
-          degree: 'French Preparatory Class - MPSI/MP*',
+          degree: '🇫🇷 Prepa - MPSI/MP*',
           description:
             'Paris 4th arrondissement french preparatory class for engineering school entrance exams 📝.',
           year: '2014 - 2016',
@@ -124,7 +121,7 @@ export default {
         },
         {
           school: 'Lycée Charlemagne',
-          degree: 'A-Level - French Scientific Baccalauréat',
+          degree: '🇫🇷 A-Level - Scientific',
           description: 'Paris 4th arrondissement secondary school 📖.',
           year: '2011 - 2014',
           courses: [
