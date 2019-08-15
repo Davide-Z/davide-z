@@ -1,124 +1,130 @@
 <template>
-  <v-tabs centered grow>
-    <v-tab v-for="(project, i) in projects" :key="i">
-      {{ project.tab }}
-    </v-tab>
+  <v-layout justify-center>
+    <v-flex md10>
+      <v-tabs class="rounded-tabs" centered grow slider-color="yellow darken-1">
+        <v-tab v-for="(project, i) in projects" :key="i">
+          {{ project.tab }}
+        </v-tab>
 
-    <v-tab-item v-for="(project, i) in projects" :key="i">
-      <v-layout justify-center>
-        <v-flex md8>
-          <v-card flat>
-            <v-card-title primary-title>
-              <div class="display-1">{{ project.title }}</div>
-            </v-card-title>
+        <v-tab-item v-for="(project, i) in projects" :key="i">
+          <v-layout justify-center>
+            <v-flex md8>
+              <v-card flat>
+                <v-card-title primary-title>
+                  <div class="display-1">{{ project.title }}</div>
+                </v-card-title>
 
-            <v-card-text>
-              <blockquote class="blockquote">
-                {{ project.overview }}
-              </blockquote>
-            </v-card-text>
-
-            <v-divider inset></v-divider>
-            <v-card-actions>
-              <v-btn flat @click="project.toolsShow = !project.toolsShow">
-                Tools
-                <v-icon>
-                  {{
-                    project.toolsShow
-                      ? 'keyboard_arrow_up'
-                      : 'keyboard_arrow_down'
-                  }}
-                </v-icon>
-              </v-btn>
-            </v-card-actions>
-
-            <v-slide-y-transition>
-              <v-card-text v-show="project.toolsShow">
-                <v-chip
-                  color="primary"
-                  text-color="white"
-                  v-for="(tool, i) in project.tools"
-                  :key="i"
-                >
-                  {{ tool }}
-                </v-chip>
-              </v-card-text>
-            </v-slide-y-transition>
-
-            <v-divider inset></v-divider>
-
-            <v-card-title secondary-title>
-              <div class="headline">Data</div>
-            </v-card-title>
-            <v-card-text>
-              <blockquote class="blockquote">
-                {{ project.data.description }}
-              </blockquote>
-              <br />
-              <v-chip color="secondary" text-color="white">
-                {{ project.data.n }} Data
-              </v-chip>
-              <v-chip color="secondary" text-color="white">
-                {{ project.data.n_features }} Features
-              </v-chip>
-            </v-card-text>
-
-            <v-card-actions>
-              <v-btn
-                flat
-                @click="project.data.featuresShow = !project.data.featuresShow"
-              >
-                Feature examples
-                <v-icon>
-                  {{
-                    project.data.featuresShow
-                      ? 'keyboard_arrow_up'
-                      : 'keyboard_arrow_down'
-                  }}
-                </v-icon>
-              </v-btn>
-            </v-card-actions>
-
-            <v-slide-y-transition>
-              <v-card-text v-show="project.data.featuresShow">
-                <v-chip
-                  color="tertiary"
-                  text-color="white"
-                  v-for="(feature, i) in project.data.feature_examples"
-                  :key="i"
-                >
-                  {{ feature }}
-                </v-chip>
-              </v-card-text>
-            </v-slide-y-transition>
-
-            <v-divider inset></v-divider>
-
-            <v-card-title secondary-title>
-              <div class="headline">Graphics</div>
-            </v-card-title>
-            <v-layout row wrap justify-space-around align-end>
-              <v-flex
-                v-for="(figure, j) in project.figures"
-                :key="j"
-                md5
-                sm4
-                xs8
-                justify-center
-              >
-                <v-img :src="figure.image"></v-img>
-                <v-card-text class="font-weight-thin font-italic">
-                  <p class="text-xs-center">
-                    Figure {{ j }} : {{ figure.caption }}
-                  </p>
+                <v-card-text>
+                  <blockquote class="blockquote">
+                    {{ project.overview }}
+                  </blockquote>
                 </v-card-text>
-              </v-flex>
-            </v-layout>
-          </v-card>
-        </v-flex>
-      </v-layout>
-    </v-tab-item>
-  </v-tabs>
+
+                <v-divider inset></v-divider>
+                <v-card-actions>
+                  <v-btn flat @click="project.toolsShow = !project.toolsShow">
+                    Tools 🛠️
+                    <v-icon>
+                      {{
+                        project.toolsShow
+                          ? 'keyboard_arrow_up'
+                          : 'keyboard_arrow_down'
+                      }}
+                    </v-icon>
+                  </v-btn>
+                </v-card-actions>
+
+                <v-slide-y-transition>
+                  <v-card-text v-show="project.toolsShow">
+                    <v-chip
+                      color="primary"
+                      text-color="white"
+                      v-for="(tool, i) in project.tools"
+                      :key="i"
+                    >
+                      {{ tool }}
+                    </v-chip>
+                  </v-card-text>
+                </v-slide-y-transition>
+
+                <v-divider inset></v-divider>
+
+                <v-card-title secondary-title>
+                  <div class="headline">Data 🗃️</div>
+                </v-card-title>
+                <v-card-text>
+                  <blockquote class="blockquote">
+                    {{ project.data.description }}
+                  </blockquote>
+                  <br />
+                  <v-chip color="secondary" text-color="white">
+                    {{ project.data.n }} Data
+                  </v-chip>
+                  <v-chip color="secondary" text-color="white">
+                    {{ project.data.n_features }} Features
+                  </v-chip>
+                </v-card-text>
+
+                <v-card-actions>
+                  <v-btn
+                    flat
+                    @click="
+                      project.data.featuresShow = !project.data.featuresShow
+                    "
+                  >
+                    Feature examples
+                    <v-icon>
+                      {{
+                        project.data.featuresShow
+                          ? 'keyboard_arrow_up'
+                          : 'keyboard_arrow_down'
+                      }}
+                    </v-icon>
+                  </v-btn>
+                </v-card-actions>
+
+                <v-slide-y-transition>
+                  <v-card-text v-show="project.data.featuresShow">
+                    <v-chip
+                      color="tertiary"
+                      text-color="white"
+                      v-for="(feature, i) in project.data.feature_examples"
+                      :key="i"
+                    >
+                      {{ feature }}
+                    </v-chip>
+                  </v-card-text>
+                </v-slide-y-transition>
+
+                <v-divider inset></v-divider>
+
+                <v-card-title secondary-title>
+                  <div class="headline">Graphics 📊</div>
+                </v-card-title>
+                <v-layout row wrap justify-space-around align-end>
+                  <v-flex
+                    v-for="(figure, j) in project.figures"
+                    :key="j"
+                    md5
+                    sm4
+                    xs8
+                    justify-center
+                  >
+                    <v-img :src="figure.image"></v-img>
+                    <v-card-text class="font-weight-thin font-italic">
+                      <p class="text-xs-center">
+                        Figure {{ j }} : {{ figure.caption }}
+                      </p>
+                    </v-card-text>
+                  </v-flex>
+                </v-layout>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-tab-item>
+      </v-tabs>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -132,7 +138,7 @@ export default {
           tools: ['Python', 'Scikit-learn', 'Plotly', 'Tensorflow'],
           toolsShow: true,
           overview:
-            "Alzheimer's disease is a chronic neurodegenerative disease 😷 that usually starts slowly and gradually worsens over time. This project aims at diagnosing Alzhaimer's among patients through their gait analysis 👣.",
+            "Alzheimer's disease is a chronic neurodegenerative disease 😷 that usually starts slowly and gradually worsens 📉 over time. This project aims at diagnosing 📋 Alzhaimer's among patients through their gait analysis 👣.",
           link:
             'https://cassiopee.wp.telecom-sudparis.eu/2018-projet-n70-learning-alzheimer-analyse-de-la-marche/',
           data: {
@@ -146,7 +152,7 @@ export default {
             ],
             featuresShow: true,
             description:
-              "203 Patients' gait parameters measured with the pressure sensitive walkway GAITRite® provided by the university hospital trust in Paris 🏥, namely the Assistance Publique – Hôpitaux de Paris (AP-HP)."
+              "203 Patients' gait parameters measured with the pressure sensitive walkway GAITRite®  👣 provided by the university hospital trust in Paris 🏥, namely the Assistance Publique – Hôpitaux de Paris (AP-HP)."
           },
           figures: [
             {
@@ -203,29 +209,27 @@ export default {
           ],
           toolsShow: true,
           overview:
-            'The startup ScreenSeed desires to automatise seeds evolution monitoring at large scale. It automatically compares seed germination experiments on metrics such as root development and germination delay through optical sensors. This project supervised by ScreenSeed aims at determining the germination rate of seeds placed into a culture tube.',
+            'The startup ScreenSeed desires to automatise seeds evolution 🌱 monitoring at large scale. It automatically compares seed germination experiments on metrics 📋 such as root development and germination delay ⏱️ through optical sensors 📷. This project supervised by ScreenSeed aims at determining the germination rate of seeds placed into a culture tube 🧫.',
           link: 'https://screenseed.com',
           data: {
-            n: '853',
-            n_features: '84',
+            n: '110 000+',
+            n_features: '90',
             feature_examples: [
-              'Cadence',
-              'Ambulation time',
-              'Velocity',
-              'Swing percentage'
+              'RGB Histogram (30 levels per colour)',
+              'Germinated proportion'
             ],
             featuresShow: true,
             description:
-              "203 Patients' gait parameters measured with the pressure sensitive walkway GAITRite® provided by the university hospital trust in Paris 🏥, namely the Assistance Publique – Hôpitaux de Paris (AP-HP)."
+              "Images of seeds are taken automatically following a predefined cycle 🔁, in order to monitor their evolution 🌱. An image contains a high-angle shot 📸 of the culture tube 🧫, and individual seed 🥔 images are extracted from it by locating seed's centroid with K-Means."
           },
           figures: [
             {
-              caption: 'Diagnostics proportion',
-              image: require('@/assets/project/health_fig1.png')
+              caption: 'Seed extraction mask',
+              image: require('@/assets/project/mask.png')
             },
             {
-              caption: 'Cadence distribution by diagnostic',
-              image: require('@/assets/project/health_fig2.png')
+              caption: 'Seed RGB Histograms',
+              image: require('@/assets/project/seed.png')
             }
           ]
         }
@@ -234,3 +238,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.rounded-tabs {
+  border-radius: 10px;
+}
+</style>

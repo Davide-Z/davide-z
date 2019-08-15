@@ -2,8 +2,12 @@
   <v-layout justify-center>
     <v-flex md10>
       <v-timeline :dense="$vuetify.breakpoint.smAndDown">
-        <v-timeline-item v-for="(education, i) in educations" :key="i">
-          <v-card class="elevation-20">
+        <v-timeline-item
+          v-for="(education, i) in educations"
+          :key="i"
+          color="secondary"
+        >
+          <v-card class="rounded-card" elevation="24">
             <v-img :src="education.image" height="200" />
             <v-card-title>
               <div>
@@ -38,7 +42,12 @@
 
             <v-slide-y-transition>
               <v-card-text v-show="education.show">
-                <v-chip v-for="(course, i) in education.courses" :key="i">
+                <v-chip
+                  :color="education.color"
+                  text-color="white"
+                  v-for="(course, i) in education.courses"
+                  :key="i"
+                >
                   {{ course }}
                 </v-chip>
               </v-card-text>
@@ -72,6 +81,7 @@ export default {
             'Financial economy 💹',
             'Game theory 🃏'
           ],
+          color: '#ba1919',
           image: require('@/assets/education/ensae.jpg'),
           logo: require('@/assets/education/ensae_logo.png'),
           show: false
@@ -90,6 +100,7 @@ export default {
             'Software engineering ⌨️',
             'Relational algebra ♾️'
           ],
+          color: '#2c4174',
           image: require('@/assets/education/telecom_sudparis.jpg'),
           logo: require('@/assets/education/tsp_logo.png'),
           show: false
@@ -106,6 +117,7 @@ export default {
             'Engineering Science 💡',
             'Chemistry ⚗️'
           ],
+          color: '#eb643a',
           image: require('@/assets/education/lycee_charlemagne.jpg'),
           logo: require('@/assets/education/charlemagne_logo.png'),
           show: false
@@ -123,6 +135,7 @@ export default {
             'Geography 🗺️',
             'History 📜'
           ],
+          color: '#eb643a',
           image: require('@/assets/education/lycee_charlemagne_cours.jpg'),
           logo: require('@/assets/education/charlemagne_logo.png'),
           show: false
@@ -132,3 +145,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.rounded-card {
+  border-radius: 20px;
+}
+</style>
