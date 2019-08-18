@@ -26,7 +26,9 @@
     </v-navigation-drawer>
     <v-toolbar color="white" flat clipped-right extended scroll-off-screen app>
       <template v-slot:extension>
-        <logo />
+        <logo class="hidden-sm-and-down" height="140" />
+        <logo class="hidden-md-and-up" height="70" />
+
         <v-spacer></v-spacer>
 
         <v-toolbar-items>
@@ -41,9 +43,9 @@
             {{ item.title }}
           </v-btn>
         </v-toolbar-items>
-
+        <!-- v-show="$vuetify.breakpoint.smAndDown" -->
         <v-toolbar-side-icon
-          v-show="$vuetify.breakpoint.smAndDown"
+          class="hidden-md-and-up"
           @click="drawer = !drawer"
         />
       </template>
@@ -54,7 +56,7 @@
       </v-container>
     </v-content>
     <v-footer>
-      <span>&copy; 2019</span>
+      <span>&copy; 2019 Davide-Z. All rights reserved.</span>
     </v-footer>
   </v-app>
 </template>

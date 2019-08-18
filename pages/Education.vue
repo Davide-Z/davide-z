@@ -16,9 +16,7 @@
                   {{ education.degree }}
                   <br />
                 </span>
-                <span v-if="$vuetify.breakpoint.smAndDown">
-                  ({{ education.year }})
-                </span>
+                <span class="hidden-md-and-up"> ({{ education.year }}) </span>
               </div>
               <v-spacer></v-spacer>
               <v-img :src="education.logo" height="100" contain />

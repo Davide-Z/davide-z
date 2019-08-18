@@ -1,13 +1,18 @@
 <template>
   <v-img
     contain
-    height="140"
+    :height="height"
     class="Logo"
     alt="Davide Z"
     :src="require('@/assets/logo.png')"
   />
 </template>
 
+<script>
+export default {
+  props: ['height']
+}
+</script>
 <style>
 .Logo {
   transform: rotateY(360deg);

@@ -1,54 +1,23 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <v-card>
-        <v-card-title class="headline"
-          >Welcome to the Vuetify + Nuxt.js template</v-card-title
-        >
-        <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a href="https://vuetifyjs.com" target="_blank">documentation</a>.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a href="https://chat.vuetifyjs.com/" target="_blank" title="chat"
-              >discord</a
-            >.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              title="contribute"
-              >issue board</a
-            >.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3" />
-          <a href="https://nuxtjs.org/" target="_blank">Nuxt Documentation</a>
-          <br />
-          <a href="https://github.com/nuxt/nuxt.js" target="_blank"
-            >Nuxt GitHub</a
-          >
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" flat nuxt to="/inspire">Continue</v-btn>
-        </v-card-actions>
-      </v-card>
+  <v-layout justify-center>
+    <v-flex xs12 sm10 md6>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam luctus
+      feugiat eros vel elementum. Nam non molestie diam. Nunc tempus tempus leo
+      eu blandit. Suspendisse in blandit eros, et dignissim justo. Proin a augue
+      vel dui facilisis varius. Curabitur ullamcorper, ex ut blandit volutpat,
+      lacus turpis condimentum elit, et molestie magna augue ac enim. Maecenas
+      nec blandit leo. Vestibulum et ultrices neque. Nullam nisi orci, volutpat
+      ac volutpat sit amet, commodo vitae elit. Suspendisse viverra velit eu
+      risus varius, a fringilla turpis accumsan. Vestibulum ut libero vitae dui
+      tincidunt mollis. Donec commodo quam eros, ac tempor tellus semper eu.
+      Vestibulum rutrum nisi egestas, pharetra tellus molestie, dictum metus.
+      Proin ullamcorper, elit euismod luctus pellentesque, ante quam bibendum
+      nulla, in vestibulum mauris purus vitae risus. Nulla ultrices, felis ac
+      porttitor tempus, ligula elit efficitur risus, ac malesuada dolor dolor
+      nec augue. Nulla luctus mattis neque non vulputate. Cras scelerisque,
+      ligula at efficitur ultrices, augue dui sodales eros, a molestie lectus
+      velit eget sapien. Vivamus feugiat, arcu ac pretium interdum, mauris enim
+      vestibulum felis, sed accumsan sapien urna id quam.
     </v-flex>
   </v-layout>
 </template>
@@ -57,7 +26,8 @@
 export default {
   data() {
     return {
-      title: 'Home'
+      title: 'Home',
+      image: require('@/assets/home.jpg')
     }
   }
 }
