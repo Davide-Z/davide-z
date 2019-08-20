@@ -26,8 +26,7 @@
 export default {
   data() {
     return {
-      title: 'Home',
-      image: require('@/assets/home.jpg')
+      title: 'Home'
     }
   }
 }
