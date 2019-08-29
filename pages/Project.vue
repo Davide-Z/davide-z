@@ -39,8 +39,8 @@
                     <v-chip
                       color="primary"
                       text-color="white"
-                      v-for="(tool, i) in project.tools"
-                      :key="i"
+                      v-for="(tool, j) in project.tools"
+                      :key="j"
                     >
                       {{ tool }}
                     </v-chip>
@@ -50,7 +50,13 @@
                 <v-divider inset></v-divider>
 
                 <v-card-title secondary-title>
-                  <div class="headline">Data 🗃️</div>
+                  <div class="headline">
+                    Data
+                    <router-link v-if="i == 1" to="/Simulation">
+                      🗃️</router-link
+                    >
+                    <span v-else>🗃</span>
+                  </div>
                 </v-card-title>
                 <v-card-text>
                   <blockquote class="blockquote">

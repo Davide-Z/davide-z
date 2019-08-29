@@ -16,6 +16,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^2.6.0",
+    "babylonjs": "^4.0.3",
     "cross-env": "^5.2.0",
     "nuxt": "^2.6.1",
     "twemoji": "^12.1.2",
