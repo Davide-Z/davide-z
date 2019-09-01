@@ -6,11 +6,11 @@
 
 <script>
 /* eslint no-unused-vars: ["error", { "varsIgnorePattern": ".*" }] */
-import simulationApp from '~/components/simulation/simulationApp'
+import SimulationApp from '~/components/simulation/SimulationApp'
 
 export default {
   mounted() {
-    const app = simulationApp('simulationCanva')
+    const app = SimulationApp('simulationCanva')
   }
 }
 </script>

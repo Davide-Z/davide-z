@@ -1,7 +1,8 @@
 /* eslint no-unused-vars: ["error", { "varsIgnorePattern": ".*" }] */
 import * as BABYLON from 'babylonjs'
+import Map from './Map'
 
-const simulationApp = function(canvaId) {
+const SimulationApp = function(canvaId) {
   const canvas = document.getElementById(canvaId) // Get the canvas element
   const engine = new BABYLON.Engine(canvas, true) // Generate the BABYLON 3D engine
 
@@ -9,6 +10,7 @@ const simulationApp = function(canvaId) {
   const createScene = function() {
     // Create the scene space
     const scene = new BABYLON.Scene(engine)
+    scene.clearColor = BABYLON.Color3.FromHexString('#a1f0da')
 
     // Add a camera to the scene and attach it to the canvas
     const camera = new BABYLON.ArcRotateCamera(
@@ -19,6 +21,7 @@ const simulationApp = function(canvaId) {
       new BABYLON.Vector3(0, 0, 0),
       scene
     )
+    camera.lowerRadiusLimit = 5
     camera.upperBetaLimit = (5 * Math.PI) / 12
     camera.panningAxis = new BABYLON.Vector3(1, 0, 1)
     camera.panningSensibility = 200
@@ -45,6 +48,8 @@ const simulationApp = function(canvaId) {
       scene
     )
 
+    const map = new Map(5, 60, 35, scene)
+
     return scene
   }
   /** End of the create scene function **/
@@ -62,4 +67,4 @@ const simulationApp = function(canvaId) {
   })
 }
 
-export default simulationApp
+export default SimulationApp
