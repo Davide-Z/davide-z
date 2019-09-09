@@ -18,6 +18,7 @@
     "@nuxtjs/pwa": "^2.6.0",
     "babylonjs": "^4.0.3",
     "cross-env": "^5.2.0",
+    "mathjs": "^6.2.1",
     "nuxt": "^2.6.1",
     "twemoji": "^12.1.2",
     "vuetify": "^1.5.5",
