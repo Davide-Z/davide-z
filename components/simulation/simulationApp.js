@@ -53,8 +53,8 @@ const SimulationApp = function(canvaId) {
 
   // Register a render loop to repeatedly render the scene
   engine.runRenderLoop(function() {
-    deltaTime += engine.getDeltaTime() / 5000
     if (deltaTime > 1) {
+      deltaTime += engine.getDeltaTime() / 5000
       deltaTime = 0
       scene.map.updateGrass()
       scene.map.render()
