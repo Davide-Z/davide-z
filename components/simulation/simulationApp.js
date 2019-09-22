@@ -1,25 +1,27 @@
 /* eslint no-unused-vars: ["error", { "varsIgnorePattern": ".*" }] */
 /* eslint no-console: 0 */
 import * as BABYLON from 'babylonjs'
+import * as GUI from 'babylonjs-gui'
 import Map from './Map'
 
 const SimulationApp = function(canvaId) {
   const canvas = document.getElementById(canvaId) // Get the canvas element
   const engine = new BABYLON.Engine(canvas, true) // Generate the BABYLON 3D engine
-  let deltaTime = 0
+
   /** Add the create scene function **/
   const createScene = function() {
     // Create the scene space
     const scene = new BABYLON.Scene(engine)
-    scene.clearColor = BABYLON.Color3.FromHexString('#c9feff')
+    scene.clearColor = BABYLON.Color3.FromHexString('#feffe7')
 
+    let isPlay = true
     const width = 60
     const depth = 35
     const height = 1
     const diameter = 1.1
-    const homogeneity = 0.2
-    scene.map = new Map(width, depth, height, diameter, homogeneity, scene)
-    scene.map.render()
+    const homogeneity = 0.1
+    const map = new Map(width, depth, height, diameter, homogeneity, scene)
+    map.render()
 
     // Add a camera to the scene and attach it to the canvas
     const camera = new BABYLON.ArcRotateCamera(
@@ -44,7 +46,44 @@ const SimulationApp = function(canvaId) {
       new BABYLON.Vector3(0, 1, 0),
       scene
     )
-    console.log(scene.map.grass)
+
+    const gui = new GUI.AdvancedDynamicTexture.CreateFullscreenUI('UI')
+
+    const panel = new GUI.StackPanel()
+    panel.isVertical = false
+    panel.adaptHeightToChildren = true
+    panel.verticalAlignment = GUI.Control.VERTICAL_ALIGNMENT_TOP
+    panel.horizontalAlignment = GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT
+    gui.addControl(panel)
+
+    const playButton = GUI.Button.CreateSimpleButton('play', 'Play')
+    playButton.width = '150px'
+    playButton.height = '40px'
+    playButton.color = 'white'
+    playButton.cornerRadius = 20
+    playButton.background = 'grey'
+    playButton.onPointerUpObservable.add(function() {
+      isPlay = true
+    })
+
+    const pauseButton = GUI.Button.CreateSimpleButton('pause', 'Pause')
+    pauseButton.width = '150px'
+    pauseButton.height = '40px'
+    pauseButton.color = 'white'
+    pauseButton.cornerRadius = 20
+    pauseButton.background = 'grey'
+    pauseButton.onPointerUpObservable.add(function() {
+      isPlay = false
+    })
+
+    panel.addControl(playButton)
+    panel.addControl(pauseButton)
+
+    scene.registerBeforeRender(function() {
+      if (isPlay) {
+        map.updateGrass()
+      }
+    })
     return scene
   }
   /** End of the create scene function **/
@@ -53,12 +92,6 @@ const SimulationApp = function(canvaId) {
 
   // Register a render loop to repeatedly render the scene
   engine.runRenderLoop(function() {
-    if (deltaTime > 1) {
-      deltaTime += engine.getDeltaTime() / 5000
-      deltaTime = 0
-      scene.map.updateGrass()
-      scene.map.render()
-    }
     scene.render()
   })
 

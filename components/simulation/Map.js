@@ -5,14 +5,16 @@ import * as MATH from 'mathjs'
 
 const Map = function(width, depth, height, diameter, homogeneity, scene) {
   this.scene = scene
+  const grassGrowingSpeed = 0.001
   let ground
   let grass
+  const tiles = []
 
   const groundColor = function(rate) {
     const minColor = BABYLON.Color3.FromHexString('#d2a62c')
-    const maxColor = BABYLON.Color3.FromHexString('#25d462')
+    const maxColor = BABYLON.Color3.FromHexString('#1dbf18')
     if (rate === 0) {
-      return BABYLON.Color3.FromHexString('#aef4fd')
+      return BABYLON.Color3.FromHexString('#0597f2')
     } else {
       return BABYLON.Color3.Lerp(minColor, maxColor, rate)
     }
@@ -118,14 +120,14 @@ const Map = function(width, depth, height, diameter, homogeneity, scene) {
     )
     tileMaterial.diffuseColor = groundColor(grass[i][j])
     tileMaterial.specularColor = new BABYLON.Color3(0, 0, 0)
+    tileMaterial.alpha = grass[i][j] ? 1 : 0.5
 
     const tile = BABYLON.MeshBuilder.CreateCylinder(
       'tile_' + i + '_' + j,
       {
         height: height,
         diameter: diameter,
-        tessellation: 6,
-        faceColors: Array(8).fill(groundColor(grass[i][j]))
+        tessellation: 6
       },
       scene
     )
@@ -134,27 +136,40 @@ const Map = function(width, depth, height, diameter, homogeneity, scene) {
     const z = 0.87 * j
     tile.position = new BABYLON.Vector3(x, 0, z)
     tile.material = tileMaterial
+    return tile
   }
 
   this.render = function() {
     for (let i = 0; i < depth; i++) {
       for (let j = 0; j < width; j++) {
-        renderTile(i, j)
+        tiles.push(renderTile(i, j))
       }
     }
   }
 
+  let time = 0
   this.updateGrass = function() {
-    grass = MATH.add(grass, ground.map(x => x.map(y => 0.1 * y))).map(x =>
-      x.map(y => (y <= 1 ? y : 1))
-    )
+    if (time % 1000 === 0) {
+      console.log(time)
+      console.log(grass)
+      console.log(tiles)
+    }
+    time += 1
+    grass = MATH.add(
+      grass,
+      ground.map(x => x.map(y => grassGrowingSpeed * y))
+    ).map(x => x.map(y => (y <= 1 ? y : 1)))
+    for (let i = 0; i < depth; i++) {
+      for (let j = 0; j < width; j++) {
+        tiles[i * width + j].material.diffuseColor = groundColor(grass[i][j])
+      }
+    }
   }
 
   ground = createWater(3)
   ground = createGround(ground)
   grass = createGrass(ground)
 
-  this.ground = ground
   this.grass = grass
 }
 
